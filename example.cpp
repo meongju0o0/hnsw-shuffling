@@ -4,37 +4,15 @@
 #include <cstring>
 #include <algorithm>
 #include <chrono>
-#include <thread>
-
-#define NUM_THREADS 8
 
 /*
  * argv[1]: dimension
  * argv[2]: max_elements
- * argv[3]: seed
  * argv[3]: M
  * argv[4]: ef_construction
+ * argv[5]: is_shuffling
+ * argv[6]: seed
 */
-
-void multi_thread_build(const float* data, const int d, const int max_elements, hnswlib::HierarchicalNSW<float>* alg_hnsw) {
-    std::vector<std::thread> threads;
-    int elements_per_thread = max_elements / NUM_THREADS;
-
-    for (int thread_id = 0; thread_id < NUM_THREADS; thread_id++) {
-        threads.push_back(std::thread([&, thread_id] {
-            const int start_label = thread_id * elements_per_thread;
-            const int end_label = (thread_id == NUM_THREADS - 1) ? max_elements : start_label + elements_per_thread;
-
-            for (int i = start_label; i < end_label; i++) {
-                alg_hnsw->addPoint(data + i * d, i);
-            }
-        }));
-    }
-
-    for (auto& thread : threads) {
-        thread.join();
-    }
-}
 
 int main(int argc, char *argv[]) {
     using namespace std::chrono;
@@ -42,10 +20,12 @@ int main(int argc, char *argv[]) {
     int dim = strtol(argv[1], nullptr, 10);             // Dimension of the elements
     int max_elements = strtol(argv[2], nullptr, 10);    // Maximum number of elements, should be known beforehand
     int M = strtol(argv[3], nullptr, 10);               // Tightly connected with internal dimensionality of the data
-    // strongly affects the memory consumption
+                                                                  // strongly affects the memory consumption
     int ef_construction = strtol(argv[4], nullptr, 10); // Controls index search speed/build speed tradeoff
 
-    int seed = strtol(argv[5], nullptr, 10);
+    bool is_shuffling = strtol(argv[5], nullptr, 10);
+
+    int seed = strtol(argv[6], nullptr, 10);
 
     // Initialize index
     hnswlib::L2Space space(dim);
@@ -54,12 +34,16 @@ int main(int argc, char *argv[]) {
     // Generate random data
     auto start = high_resolution_clock::now();
     float* data = generate_random_cluster_data(dim, max_elements, seed);
-    shuffle_data(data, dim, max_elements, seed);
+    if(is_shuffling) shuffle_data(data, dim, max_elements, seed);
     auto end = high_resolution_clock::now();
     std::cout << "Data generation time: " << duration_cast<milliseconds>(end - start).count() << " ms" << std::endl;
 
     // Add data to index
-    multi_thread_build(data, dim, max_elements, alg_hnsw);
+    start = high_resolution_clock::now();
+    for (int i = 0; i < max_elements; i++) {
+        alg_hnsw->addPoint(data + i * dim, i);
+    }
+    end = high_resolution_clock::now();
     std::cout << "Index building time: " << duration_cast<milliseconds>(end - start).count() << " ms" << std::endl;
 
     // Query the elements and measure times

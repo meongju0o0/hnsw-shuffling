@@ -2,7 +2,7 @@
 # of vectors: 10000
 dimension: 1024
 
-random seed value: 47
+random generation seed value: 47
 random shuffling seed value: 47
 
 
@@ -11,75 +11,98 @@ M =  16
 ef_construction: 200
 
 
-셔플링 없이 빌드, 질의
-Data generation time: 1402 ms
-Index building time: 30689 ms
-Min query time: 327 µs
-Max query time: 1687 µs
-Total query time: 5065425 µs
+no shuffling
+
+Execution 1 started.
+Data generation time: 1430 ms
+Index building time: 30688 ms
+Min query time: 323 µs
+Max query time: 1597 µs
+Total query time: 5071647 µs
 Recall: 0.9781
+Execution 1 completed successfully.
 
-Data generation time: 1389 ms
-Index building time: 30550 ms
-Min query time: 328 µs
-Max query time: 1545 µs
-Total query time: 5072416 µs
-Recall: 0.9781
-
-Data generation time: 1404 ms
-Index building time: 30515 ms
-Min query time: 325 µs
-Max query time: 1286 µs
-Total query time: 5039813 µs
-Recall: 0.9781
-
-Data generation time: 1423 ms
-Index building time: 30581 ms
-Min query time: 330 µs
-Max query time: 1457 µs
-Total query time: 5042380 µs
-Recall: 0.9781
-
-Data generation time: 1403 ms
-Index building time: 30584 ms
-Min query time: 325 µs
-Max query time: 2382 µs
-Total query time: 5078029 µs
-Recall: 0.9781
-
-
-셔플링 후 빌드, 질의
-Data generation time: 1474 ms
-Index building time: 30578 ms
-Min query time: 347 µs
-Max query time: 1601 µs
-Total query time: 5487337 µs
-Recall: 0.983
-
-Data generation time: 1519 ms
-Index building time: 30284 ms
-Min query time: 340 µs
-Max query time: 1468 µs
-Total query time: 5480339 µs
-Recall: 0.983
-
-Data generation time: 1484 ms
-Index building time: 30157 ms
-Min query time: 349 µs
+Execution 2 started.
+Data generation time: 1383 ms
+Index building time: 30606 ms
+Min query time: 323 µs
 Max query time: 1438 µs
-Total query time: 5476342 µs
-Recall: 0.983
+Total query time: 5057650 µs
+Recall: 0.9781
+Execution 2 completed successfully.
 
-Data generation time: 1448 ms
-Index building time: 30212 ms
-Min query time: 346 µs
-Max query time: 1702 µs
-Total query time: 5468856 µs
-Recall: 0.983
+Execution 3 started.
+Data generation time: 1383 ms
+Index building time: 30563 ms
+Min query time: 324 µs
+Max query time: 1867 µs
+Total query time: 5048237 µs
+Recall: 0.9781
+Execution 3 completed successfully.
 
-Data generation time: 1467 ms
-Index building time: 30189 ms
-Min query time: 346 µs
-Max query time: 1769 µs
-Total query time: 5474750 µs
+Execution 4 started.
+Data generation time: 1376 ms
+Index building time: 30468 ms
+Min query time: 323 µs
+Max query time: 1312 µs
+Total query time: 5058549 µs
+Recall: 0.9781
+Execution 4 completed successfully.
+
+Execution 5 started.
+Data generation time: 1391 ms
+Index building time: 30501 ms
+Min query time: 327 µs
+Max query time: 1557 µs
+Total query time: 5049569 µs
+Recall: 0.9781
+Execution 5 completed successfully.
+
+yes shuffling
+
+Execution 1 started.
+Data generation time: 1447 ms
+Index building time: 30120 ms
+Min query time: 349 µs
+Max query time: 1735 µs
+Total query time: 5482127 µs
 Recall: 0.983
+Execution 1 completed successfully.
+
+Execution 2 started.
+Data generation time: 1422 ms
+Index building time: 30356 ms
+Min query time: 346 µs
+Max query time: 1893 µs
+Total query time: 5595020 µs
+Recall: 0.983
+Execution 2 completed successfully.
+
+Execution 3 started.
+Data generation time: 1445 ms
+Index building time: 30224 ms
+Min query time: 348 µs
+Max query time: 1437 µs
+Total query time: 5483250 µs
+Recall: 0.983
+Execution 3 completed successfully.
+
+Execution 4 started.
+Data generation time: 1426 ms
+Index building time: 30088 ms
+Min query time: 350 µs
+Max query time: 1973 µs
+Total query time: 5500344 µs
+Recall: 0.983
+Execution 4 completed successfully.
+
+Execution 5 started.
+Data generation time: 1425 ms
+Index building time: 30124 ms
+Min query time: 347 µs
+Max query time: 1513 µs
+Total query time: 5475223 µs
+Recall: 0.983
+Execution 5 completed successfully.
+
+All executions completed.

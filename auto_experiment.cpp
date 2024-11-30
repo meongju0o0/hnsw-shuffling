@@ -1,20 +1,25 @@
 #include <iostream>
+#include <string>
 #include <cstdlib>
 #include <chrono>
 #include <thread>
 
 #define NUM_EXECUTIONS 5
 
-/*
- * argv[1]: dimension
- * argv[2]: max_elements
- * argv[3]: seed
- * argv[4]: M
- * argv[5]: ef_construction
-*/
+#define DIM 1024
+#define MAX_ELEMENTS 100000
+#define M 32
+#define EF_CONSTRUCTION 1000
+#define SEED 47
 
-int main() {
-    const std::string command = "single_thread_example.exe 1024 1000 47 16 200";
+void test(bool is_shuffling) {
+    std::string command = "example.exe";
+    command += (" " + std::to_string(DIM));
+    command += (" " + std::to_string(MAX_ELEMENTS));
+    command += (" " + std::to_string(M));
+    command += (" " + std::to_string(EF_CONSTRUCTION));
+    command += (" " + std::to_string(is_shuffling));
+    command += (" " + std::to_string(SEED));
 
     for (int i = 1; i <= NUM_EXECUTIONS; ++i) {
         std::cout << "Execution " << i << " started." << std::endl;
@@ -29,6 +34,14 @@ int main() {
 
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
+}
+
+int main() {
+    std::cout << "no shuffling" << std::endl << std::endl;
+    test(false);
+
+    std::cout << "yes shuffling" << std::endl << std:: endl;
+    test(true);
 
     std::cout << "All executions completed." << std::endl;
     return 0;

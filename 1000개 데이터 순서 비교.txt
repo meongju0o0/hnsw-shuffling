@@ -1,0 +1,108 @@
+데이터셋
+# of vectors: 1000
+dimension: 1024
+
+random generation seed value: 47
+random shuffling seed value: 47
+
+
+HNSW 하이퍼파라미터
+M =  16
+ef_construction: 200
+
+
+no shuffling
+
+Execution 1 started.
+Data generation time: 157 ms
+Index building time: 1325 ms
+Min query time: 158 µs
+Max query time: 1110 µs
+Total query time: 443346 µs
+Recall: 0.999
+Execution 1 completed successfully.
+
+Execution 2 started.
+Data generation time: 137 ms
+Index building time: 1312 ms
+Min query time: 162 µs
+Max query time: 1085 µs
+Total query time: 455452 µs
+Recall: 0.999
+Execution 2 completed successfully.
+
+Execution 3 started.
+Data generation time: 137 ms
+Index building time: 1313 ms
+Min query time: 157 µs
+Max query time: 1417 µs
+Total query time: 455854 µs
+Recall: 0.999
+Execution 3 completed successfully.
+
+Execution 4 started.
+Data generation time: 137 ms
+Index building time: 1325 ms
+Min query time: 152 µs
+Max query time: 1026 µs
+Total query time: 442875 µs
+Recall: 0.999
+Execution 4 completed successfully.
+
+Execution 5 started.
+Data generation time: 137 ms
+Index building time: 1313 ms
+Min query time: 159 µs
+Max query time: 1115 µs
+Total query time: 447595 µs
+Recall: 0.999
+Execution 5 completed successfully.
+
+yes shuffling
+
+Execution 1 started.
+Data generation time: 144 ms
+Index building time: 1249 ms
+Min query time: 133 µs
+Max query time: 453 µs
+Total query time: 227909 µs
+Recall: 1
+Execution 1 completed successfully.
+
+Execution 2 started.
+Data generation time: 141 ms
+Index building time: 1242 ms
+Min query time: 140 µs
+Max query time: 380 µs
+Total query time: 227614 µs
+Recall: 1
+Execution 2 completed successfully.
+
+Execution 3 started.
+Data generation time: 143 ms
+Index building time: 1252 ms
+Min query time: 146 µs
+Max query time: 441 µs
+Total query time: 227409 µs
+Recall: 1
+Execution 3 completed successfully.
+
+Execution 4 started.
+Data generation time: 141 ms
+Index building time: 1249 ms
+Min query time: 147 µs
+Max query time: 955 µs
+Total query time: 229433 µs
+Recall: 1
+Execution 4 completed successfully.
+
+Execution 5 started.
+Data generation time: 141 ms
+Index building time: 1267 ms
+Min query time: 145 µs
+Max query time: 489 µs
+Total query time: 229535 µs
+Recall: 1
+Execution 5 completed successfully.
+
+All executions completed.
