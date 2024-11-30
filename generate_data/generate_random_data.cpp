@@ -4,9 +4,8 @@
 
 #include "./generate_random_data.h"
 
-float *generate_random_data(const int dim, const int max_elements) {
-    std::mt19937 rng;
-    rng.seed(47);
+float *generate_random_data(const int dim, const int max_elements, const int seed) {
+    std::mt19937 rng(seed); // Seed for reproducibility
     std::uniform_real_distribution<> distrib_real;
 
     float* data = new float[dim * max_elements];
@@ -17,14 +16,14 @@ float *generate_random_data(const int dim, const int max_elements) {
     return data;
 }
 
-float* generate_random_cluster_data(const int dim, const int max_elements) {
+float* generate_random_cluster_data(const int dim, const int max_elements, const int seed) {
     // Constants for clusters
     const int num_clusters = 8; // Number of clusters
     const int elements_per_cluster = max_elements / num_clusters; // Elements in each cluster
     const float cluster_offset = 100.0f; // Distance between cluster centroids
 
     // Random number generator
-    std::mt19937 rng(47);
+    std::mt19937 rng(seed); // Seed for reproducibility
     std::uniform_real_distribution<> distrib_real(-5.0, 5.0); // Range of random values within a cluster
 
     // Allocate memory for the data
@@ -50,7 +49,7 @@ float* generate_random_cluster_data(const int dim, const int max_elements) {
     return data;
 }
 
-void shuffle_data(float* data, const int dim, const int max_elements) {
+void shuffle_data(float* data, const int dim, const int max_elements, const int seed) {
     // Create a vector of indices for shuffling
     std::vector<int> indices(max_elements);
     for (int i = 0; i < max_elements; ++i) {
@@ -58,7 +57,7 @@ void shuffle_data(float* data, const int dim, const int max_elements) {
     }
 
     // Random number generator
-    std::mt19937 rng(47); // Seed for reproducibility
+    std::mt19937 rng(seed); // Seed for reproducibility
     std::shuffle(indices.begin(), indices.end(), rng);
 
     // Create a temporary buffer to hold the shuffled data

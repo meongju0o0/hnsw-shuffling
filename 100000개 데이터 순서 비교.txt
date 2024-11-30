@@ -1,0 +1,14 @@
+데이터셋
+# of vectors: 100000
+dimension: 1024
+
+random seed value: 47
+random shuffling seed value: 47
+
+
+HNSW 하이퍼파라미터
+M =  16
+ef_construction: 200
+
+
+셔플링 없이 빌드, 질의

@@ -10,8 +10,8 @@
 #include <vector>
 #include <algorithm>
 
-float *generate_random_data(int dim, int max_elements);
-float *generate_random_cluster_data(int dim, int max_elements);
-void shuffle_data(float* data, int dim, int max_elements);
+float *generate_random_data(int dim, int max_elements, int seed);
+float *generate_random_cluster_data(int dim, int max_elements, int seed);
+void shuffle_data(float* data, int dim, int max_elements, int seed);
 
 #endif //GENERATE_RANDOM_DATA_H
