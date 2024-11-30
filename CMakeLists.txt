@@ -12,6 +12,8 @@ add_executable(single_thread_example
 )
 
 add_executable(multi_thread_example
-        single_thread_example.cpp
+        multi_thread_example.cpp
         generate_data/generate_random_data.cpp
 )
+
+add_executable(auto_experiment auto_experiment.cpp)

@@ -3,13 +3,13 @@
 #include <iostream>
 #include <chrono>
 
-#define SEED 30
+#define SEED 47
 
 int main() {
     using namespace std::chrono;
 
     int dim = 1024;             // Dimension of the elements
-    int max_elements = 100000;   // Maximum number of elements, should be known beforehand
+    int max_elements = 10000;   // Maximum number of elements, should be known beforehand
     int M = 16;                 // Tightly connected with internal dimensionality of the data
                                 // strongly affects the memory consumption
     int ef_construction = 200;  // Controls index search speed/build speed tradeoff
