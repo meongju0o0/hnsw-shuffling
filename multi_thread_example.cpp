@@ -1,11 +1,20 @@
 #include "./hnswlib/hnswlib.h"
 #include "./generate_data/generate_random_data.h"
 #include <iostream>
-#include <thread>
+#include <cstring>
+#include <algorithm>
 #include <chrono>
+#include <thread>
 
-#define SEED 47
 #define NUM_THREADS 8
+
+/*
+ * argv[1]: dimension
+ * argv[2]: max_elements
+ * argv[3]: seed
+ * argv[3]: M
+ * argv[4]: ef_construction
+*/
 
 void multi_thread_build(const float* data, const int d, const int max_elements, hnswlib::HierarchicalNSW<float>* alg_hnsw) {
     std::vector<std::thread> threads;
@@ -27,14 +36,16 @@ void multi_thread_build(const float* data, const int d, const int max_elements, 
     }
 }
 
-int main() {
+int main(int argc, char *argv[]) {
     using namespace std::chrono;
 
-    int dim = 1024;             // Dimension of the elements
-    int max_elements = 10000;   // Maximum number of elements, should be known beforehand
-    int M = 16;                 // Tightly connected with internal dimensionality of the data
-                                // strongly affects the memory consumption
-    int ef_construction = 200;  // Controls index search speed/build speed tradeoff
+    int dim = strtol(argv[1], nullptr, 10);             // Dimension of the elements
+    int max_elements = strtol(argv[2], nullptr, 10);    // Maximum number of elements, should be known beforehand
+    int M = strtol(argv[3], nullptr, 10);               // Tightly connected with internal dimensionality of the data
+    // strongly affects the memory consumption
+    int ef_construction = strtol(argv[4], nullptr, 10); // Controls index search speed/build speed tradeoff
+
+    int seed = strtol(argv[5], nullptr, 10);
 
     // Initialize index
     hnswlib::L2Space space(dim);
@@ -42,8 +53,8 @@ int main() {
 
     // Generate random data
     auto start = high_resolution_clock::now();
-    float* data = generate_random_cluster_data(dim, max_elements, SEED);
-    shuffle_data(data, dim, max_elements, SEED);
+    float* data = generate_random_cluster_data(dim, max_elements, seed);
+    shuffle_data(data, dim, max_elements, seed);
     auto end = high_resolution_clock::now();
     std::cout << "Data generation time: " << duration_cast<milliseconds>(end - start).count() << " ms" << std::endl;
 

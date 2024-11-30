@@ -5,8 +5,16 @@
 
 #define NUM_EXECUTIONS 5
 
+/*
+ * argv[1]: dimension
+ * argv[2]: max_elements
+ * argv[3]: seed
+ * argv[4]: M
+ * argv[5]: ef_construction
+*/
+
 int main() {
-    const std::string command = "single_thread_example.exe";
+    const std::string command = "single_thread_example.exe 1024 1000 47 16 200";
 
     for (int i = 1; i <= NUM_EXECUTIONS; ++i) {
         std::cout << "Execution " << i << " started." << std::endl;
