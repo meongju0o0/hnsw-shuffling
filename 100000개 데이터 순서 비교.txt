@@ -2,8 +2,8 @@
 # of vectors: 100000
 dimension: 1024
 
-random generation seed value: 47
-random shuffling seed value: 47
+random generation seed value: 37
+random shuffling seed value: 37
 
 
 HNSW 하이퍼파라미터
@@ -11,3 +11,24 @@ M =  32
 ef_construction: 1000
 
 
+no shuffling
+
+Execution 1 started.
+Data generation time: 13998 ms
+Index building time: 3131284 ms
+Min query time: 744 µs
+Max query time: 6272 µs
+Total query time: 136112818 µs
+Recall: 0.92568
+Execution 1 completed successfully.
+
+yes shuffling
+
+Execution 1 started.
+Data generation time: 14416 ms
+Index building time: 3056439 ms
+Min query time: 717 µs
+Max query time: 5764 µs
+Total query time: 136046473 µs
+Recall: 0.92574
+Execution 1 completed successfully.

@@ -4,13 +4,13 @@
 #include <chrono>
 #include <thread>
 
-#define NUM_EXECUTIONS 5
+#define NUM_EXECUTIONS 1
 
 #define DIM 1024
 #define MAX_ELEMENTS 100000
 #define M 32
 #define EF_CONSTRUCTION 1000
-#define SEED 47
+#define SEED 37
 
 void test(bool is_shuffling) {
     std::string command = "example.exe";
@@ -43,6 +43,5 @@ int main() {
     std::cout << "yes shuffling" << std::endl << std:: endl;
     test(true);
 
-    std::cout << "All executions completed." << std::endl;
     return 0;
 }
