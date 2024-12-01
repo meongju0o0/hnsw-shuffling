@@ -1,9 +1,6 @@
 #include "./hnswlib/hnswlib.h"
 #include "./generate_data/generate_random_data.h"
-#include <iostream>
-#include <cstring>
-#include <algorithm>
-#include <chrono>
+#include "./shuffle_data/shuffle_data.h"
 
 /*
  * argv[1]: dimension
@@ -17,11 +14,10 @@
 int main(int argc, char *argv[]) {
     using namespace std::chrono;
 
-    int dim = strtol(argv[1], nullptr, 10);             // Dimension of the elements
-    int max_elements = strtol(argv[2], nullptr, 10);    // Maximum number of elements, should be known beforehand
-    int M = strtol(argv[3], nullptr, 10);               // Tightly connected with internal dimensionality of the data
-                                                                  // strongly affects the memory consumption
-    int ef_construction = strtol(argv[4], nullptr, 10); // Controls index search speed/build speed tradeoff
+    int dim = strtol(argv[1], nullptr, 10);
+    int max_elements = strtol(argv[2], nullptr, 10);
+    int M = strtol(argv[3], nullptr, 10);
+    int ef_construction = strtol(argv[4], nullptr, 10);
 
     bool is_shuffling = strtol(argv[5], nullptr, 10);
 

@@ -2,13 +2,13 @@
 # of vectors: 100000
 dimension: 1024
 
-random generation seed value: 37
-random shuffling seed value: 37
+random generation seed value: 47
+random shuffling seed value: 47
 
 
 HNSW 하이퍼파라미터
-M =  32
-ef_construction: 1000
+M = 20
+ef_construction: 1500
 
 
 no shuffling

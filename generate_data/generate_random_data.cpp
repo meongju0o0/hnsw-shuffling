@@ -16,7 +16,7 @@ float *generate_random_data(const int dim, const int max_elements, const int see
     return data;
 }
 
-float* generate_random_cluster_data(const int dim, const int max_elements, const int seed) {
+float *generate_random_cluster_data(const int dim, const int max_elements, const int seed) {
     // Constants for clusters
     const int num_clusters = 8; // Number of clusters
     const int elements_per_cluster = max_elements / num_clusters; // Elements in each cluster
@@ -24,13 +24,13 @@ float* generate_random_cluster_data(const int dim, const int max_elements, const
 
     // Random number generator
     std::mt19937 rng(seed); // Seed for reproducibility
-    std::uniform_real_distribution<> distrib_real(-5.0, 5.0); // Range of random values within a cluster
+    std::uniform_real_distribution<float> distrib_real(-5.0, 5.0); // Range of random values within a cluster
 
     // Allocate memory for the data
     float* data = new float[dim * max_elements];
 
     // Generate clusters
-    for (int cluster_idx = 0; cluster_idx < num_clusters; ++cluster_idx) {
+    for (int cluster_idx = 0; cluster_idx < num_clusters; cluster_idx++) {
         // Define the centroid for the current cluster
         std::vector<float> centroid(dim);
         for (int d = 0; d < dim; ++d) {
@@ -47,36 +47,4 @@ float* generate_random_cluster_data(const int dim, const int max_elements, const
     }
 
     return data;
-}
-
-void shuffle_data(float* data, const int dim, const int max_elements, const int seed) {
-    // Create a vector of indices for shuffling
-    std::vector<int> indices(max_elements);
-    for (int i = 0; i < max_elements; ++i) {
-        indices[i] = i;
-    }
-
-    // Random number generator
-    std::mt19937 rng(seed); // Seed for reproducibility
-    std::shuffle(indices.begin(), indices.end(), rng);
-
-    // Create a temporary buffer to hold the shuffled data
-    float* temp_data = new float[dim * max_elements];
-
-    // Shuffle the data based on the shuffled indices
-    for (int i = 0; i < max_elements; ++i) {
-        int src_idx = indices[i] * dim;
-        int dest_idx = i * dim;
-        for (int d = 0; d < dim; ++d) {
-            temp_data[dest_idx + d] = data[src_idx + d];
-        }
-    }
-
-    // Copy shuffled data back to the original data array
-    for (int i = 0; i < dim * max_elements; ++i) {
-        data[i] = temp_data[i];
-    }
-
-    // Free the temporary buffer
-    delete[] temp_data;
 }
